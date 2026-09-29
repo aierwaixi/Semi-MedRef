@@ -1,0 +1,15 @@
+torch==2.5.0
+torchvision==0.20.0
+pytorch-lightning==1.9.0
+torchmetrics==0.10.3
+transformers==4.30.2
+monai==1.0.1
+numpy==1.26.4
+pandas==2.3.0
+einops==0.8.1
+PyYAML==6.0.3
+Pillow==9.4.0
+scikit-learn==1.7.0
+tqdm==4.67.1
+tensorboard==2.20.0
+setuptools==80.9.0

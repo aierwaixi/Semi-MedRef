@@ -1,0 +1,45 @@
+{
+  "artifact": "brain_mri_slice_to_pid.csv",
+  "rows": 3064,
+  "unique_slice_ids": 3064,
+  "unique_patient_ids": 233,
+  "columns": [
+    "slice_id",
+    "pid",
+    "fold"
+  ],
+  "sha256": "9452ed8e731313725762ddea11b5dbc945cc0f34868b1fdc4e43fc44ca88de9d",
+  "source_repository": "https://huggingface.co/datasets/MedOtter/Figshare_Brain_Tumor",
+  "source_revision": "7da910611fd84c7019c800193b6daf86a866aa44",
+  "source_files": [
+    {
+      "path": "data/train-00000-of-00003.parquet",
+      "expected_lfs_sha256": "b81663b0e05f9600eeb66d0e93db1b293bb7cafa7eda80e31f0e4e126c04d8dd"
+    },
+    {
+      "path": "data/train-00001-of-00003.parquet",
+      "expected_lfs_sha256": "806fdf928e1577b7211104f37229a8a1067ee3a4614b097f4ee1d0328575566a"
+    },
+    {
+      "path": "data/train-00002-of-00003.parquet",
+      "expected_lfs_sha256": "997eefde2ef0f9057e0627f54990e99f5103f2266d356c4850a432df802ee380"
+    },
+    {
+      "path": "data/test-00000-of-00001.parquet",
+      "expected_lfs_sha256": "519506010c009b13fb0c6db4bac83e651ae4902671e39e12e85faa23f488139a"
+    }
+  ],
+  "projection": "SELECT CAST(id AS INTEGER) AS slice_id, CAST(pid AS VARCHAR) AS pid, CAST(fold AS INTEGER) AS fold, ordered by slice_id",
+  "official_fold_validation": {
+    "url": "https://ndownloader.figshare.com/files/7005344",
+    "figshare_file_id": 7005344,
+    "filename": "cvind.mat",
+    "md5": "5ea82eb3212c9fcb84290ccf0beb486d",
+    "result": "all 3064 projected fold values exactly match cvind[1..3064]"
+  },
+  "dataset_source": {
+    "url": "https://figshare.com/articles/dataset/brain_tumor_dataset/1512427",
+    "doi": "10.6084/m9.figshare.1512427",
+    "note": "The original cjdata.PID field provides patient identity; cvind.mat provides the authors' patient-disjoint 5-fold assignment."
+  }
+}

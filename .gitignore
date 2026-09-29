@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+.vscode/
+datasets/
+pretrained/
+outputs/
+*.ckpt
+*.pth
+*.pt
+*.bin

@@ -1,0 +1,288 @@
+{
+  "output_paths": {
+    "train_labeled": "train_labeled_5pct.json",
+    "train_unlabeled": "train_unlabeled_5pct.json",
+    "val": "val.json",
+    "test": "test.json",
+    "all_splits": "all_splits.json",
+    "excluded_qc": "excluded_qc.json"
+  },
+  "official_rows": 38731,
+  "used_rows": 38726,
+  "qc_excluded_rows": 5,
+  "counts": {
+    "train_labeled": {
+      "total": 1399,
+      "by_modality": {
+        "brain_mri": 92,
+        "breast_ultrasound": 30,
+        "lung_ct": 358,
+        "lung_xray": 814,
+        "polyp_endoscopy": 65,
+        "skin_dermoscopy": 40
+      }
+    },
+    "train_unlabeled": {
+      "total": 26597,
+      "by_modality": {
+        "brain_mri": 1751,
+        "breast_ultrasound": 569,
+        "lung_ct": 6805,
+        "lung_xray": 15466,
+        "polyp_endoscopy": 1240,
+        "skin_dermoscopy": 766
+      }
+    },
+    "val": {
+      "total": 3132,
+      "by_modality": {
+        "brain_mri": 679,
+        "breast_ultrasound": 50,
+        "lung_ct": 796,
+        "lung_xray": 1372,
+        "polyp_endoscopy": 145,
+        "skin_dermoscopy": 90
+      }
+    },
+    "test": {
+      "total": 7598,
+      "by_modality": {
+        "brain_mri": 542,
+        "breast_ultrasound": 113,
+        "lung_ct": 4809,
+        "lung_xray": 957,
+        "polyp_endoscopy": 798,
+        "skin_dermoscopy": 379
+      }
+    },
+    "excluded_qc": {
+      "total": 5,
+      "by_modality": {
+        "brain_mri": 0,
+        "breast_ultrasound": 0,
+        "lung_ct": 1,
+        "lung_xray": 0,
+        "polyp_endoscopy": 0,
+        "skin_dermoscopy": 4
+      }
+    }
+  },
+  "label_selection": {
+    "brain_mri": {
+      "selection_unit": "patient_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.049918610960390665,
+      "labeled_images": 92,
+      "unlabeled_images": 1751,
+      "labeled_groups": 6,
+      "unlabeled_groups": 136
+    },
+    "breast_ultrasound": {
+      "selection_unit": "case_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.05008347245409015,
+      "labeled_images": 30,
+      "unlabeled_images": 569,
+      "labeled_groups": 30,
+      "unlabeled_groups": 569
+    },
+    "lung_ct": {
+      "selection_unit": "study_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.049979059053469214,
+      "labeled_images": 358,
+      "unlabeled_images": 6805,
+      "labeled_groups": 4,
+      "unlabeled_groups": 55
+    },
+    "lung_xray": {
+      "selection_unit": "case_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.05,
+      "labeled_images": 814,
+      "unlabeled_images": 15466,
+      "labeled_groups": 810,
+      "unlabeled_groups": 15442
+    },
+    "polyp_endoscopy": {
+      "selection_unit": "case_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.04980842911877394,
+      "labeled_images": 65,
+      "unlabeled_images": 1240,
+      "labeled_groups": 65,
+      "unlabeled_groups": 1240
+    },
+    "skin_dermoscopy": {
+      "selection_unit": "case_and_exact_image_component",
+      "target_fraction": 0.05,
+      "actual_image_fraction": 0.04962779156327544,
+      "labeled_images": 40,
+      "unlabeled_images": 766,
+      "labeled_groups": 40,
+      "unlabeled_groups": 765
+    }
+  },
+  "partition_counts": {
+    "brain_mri": {
+      "train": 1843,
+      "val": 679,
+      "test": 542
+    },
+    "breast_ultrasound": {
+      "train": 599,
+      "val": 50,
+      "test": 113
+    },
+    "lung_ct": {
+      "train": 7163,
+      "val": 796,
+      "test": 4809
+    },
+    "lung_xray": {
+      "train": 16280,
+      "val": 1372,
+      "test": 957
+    },
+    "polyp_endoscopy": {
+      "train": 1305,
+      "val": 145,
+      "test": 798
+    },
+    "skin_dermoscopy": {
+      "train": 806,
+      "val": 90,
+      "test": 379
+    }
+  },
+  "position_audit": {
+    "total": 38726,
+    "answer_parsed": 38725,
+    "answer_unparsed": 1,
+    "answer_parse_coverage": 0.999974177555131,
+    "unparsed_sample_ids": [
+      "lung_ct:lung_CT/train_masks/ID00025637202179541264076_11.jpg"
+    ],
+    "source": "answer only; position column is audit-only and never a fallback"
+  },
+  "duplicate_qc": {
+    "image_groups_crossing_official_test": [
+      {
+        "sha256": "1668c6986889433151f98eb8af5162f2b2c5d927da1e00b365d6ec574e7c8840",
+        "kept": [
+          "lung_ct:lung_CT/test_masks/ID00299637202280383305867_32.jpg"
+        ],
+        "excluded": [
+          "lung_ct:lung_CT/val_masks/ID00299637202280383305867_32.jpg"
+        ],
+        "original_splits": [
+          "test",
+          "val"
+        ]
+      },
+      {
+        "sha256": "7339dae09086b219fd7d330f133aabbe936e5703b511aa55c472a0550f8b71de",
+        "kept": [
+          "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0000279_Segmentation.png"
+        ],
+        "excluded": [
+          "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0000280_Segmentation.png"
+        ],
+        "original_splits": [
+          "test",
+          "train"
+        ]
+      },
+      {
+        "sha256": "c694a3ad31149b8198037907d79db1ed968d0e281d0d6a8f292e2118c42050a7",
+        "kept": [
+          "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0001484_Segmentation.png"
+        ],
+        "excluded": [
+          "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001184_Segmentation.png"
+        ],
+        "original_splits": [
+          "test",
+          "train"
+        ]
+      },
+      {
+        "sha256": "f122a339428c9cb3dad1ee9be837e0848b2ecfd58f7f5fa15bdda1ac12351428",
+        "kept": [
+          "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0001685_Segmentation.png"
+        ],
+        "excluded": [
+          "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001385_Segmentation.png"
+        ],
+        "original_splits": [
+          "test",
+          "train"
+        ]
+      }
+    ],
+    "mask_only_groups_crossing_official_test": [
+      {
+        "sha256": "6d4796b7b49b9571f1c73270c3869965fdad5a73cc05fc0c657dc98c86bd20d3",
+        "kept": [
+          "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0011374_Segmentation.png"
+        ],
+        "excluded": [
+          "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0010065_Segmentation.png"
+        ],
+        "original_splits": [
+          "test",
+          "train"
+        ]
+      }
+    ],
+    "num_excluded": 5
+  },
+  "overlap_audit": {
+    "sample_id": {
+      "train_labeled__train_unlabeled": 0,
+      "train_labeled__val": 0,
+      "train_labeled__test": 0,
+      "train_unlabeled__val": 0,
+      "train_unlabeled__test": 0,
+      "val__test": 0
+    },
+    "image_sha256": {
+      "train_labeled__train_unlabeled": 0,
+      "train_labeled__val": 0,
+      "train_labeled__test": 0,
+      "train_unlabeled__val": 0,
+      "train_unlabeled__test": 0,
+      "val__test": 0
+    },
+    "mask_sha256_audit_only": {
+      "train_labeled__train_unlabeled": 2,
+      "train_labeled__val": 0,
+      "train_labeled__test": 0,
+      "train_unlabeled__val": 0,
+      "train_unlabeled__test": 0,
+      "val__test": 0
+    },
+    "recoverable_group": {
+      "train_labeled__train_unlabeled": 0,
+      "train_labeled__val": 0,
+      "train_labeled__test": 0,
+      "train_unlabeled__val": 0,
+      "train_unlabeled__test": 0,
+      "val__test": 0
+    },
+    "partition_group": {
+      "train_labeled__train_unlabeled": 0,
+      "train_labeled__val": 0,
+      "train_labeled__test": 0,
+      "train_unlabeled__val": 0,
+      "train_unlabeled__test": 0,
+      "val__test": 0
+    }
+  },
+  "content_audit": {
+    "records": 38731,
+    "unique_files": 77462,
+    "bytes_read": 4228920967,
+    "algorithm": "sha256"
+  }
+}

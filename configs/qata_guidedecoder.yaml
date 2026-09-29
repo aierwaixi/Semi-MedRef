@@ -1,0 +1,64 @@
+TRAIN:
+  seed: 42
+  train_batch_size: 32
+  accumulate_grad_batches: 1
+  valid_batch_size: 8
+  num_workers: 8
+  lr: 0.0003
+  image_size: [224, 224]
+  min_epochs: 20
+  max_epochs: 100
+  patience: 30
+  device: [0]
+  model_save_path: ./outputs
+  model_save_filename: guidedecoder
+  convnext_checkpoint: ""
+  use_pos_aug: true
+  pos_aug_mode: mix
+  pos_aug_p: 0.5
+  use_pos_aug_geosync: false
+  p_hflip: 0.0
+  enable_itc: true
+  itc_weight: 0.02
+  itc_tau: 0.07
+  itc_w_unsup: 0.10
+  use_xpatchmix: true
+  xpatchmix_mode: pos
+  mix_margin: 0.0
+  mix_block: 16
+  mix_prob: 0.08
+  visualization_interval: 0
+
+MODEL:
+  model_arch: guidedecoder
+  bert_type: microsoft/BiomedVLP-CXR-BERT-specialized
+  vision_type: facebook/convnext-tiny-224
+  project_dim: 768
+
+SEMI:
+  burn_in_epochs: 5
+  unsup_weight: 0.3
+  conf_th: 0.55
+  combined_mode: max_size_cycle
+  ema_decay_semi: 0.999
+  unsup_rampup_epochs: 15
+  ema_decay_start: 0.99
+  ema_decay_end: 0.999
+  ema_warmup_epochs: 20
+  pseudo_threshold_mode: hard
+  pseudo_threshold_temp: 0.05
+
+DATA:
+  dataset: qata
+  train_csv_path: ./data_splits/QaTa/split_labeled_0.02.json
+  unlabeled_csv_path: ./data_splits/QaTa/split_unlabeled_0.02.json
+  train_root_path: ./datasets/QaTa/train
+  valid_csv_path: ./data_splits/QaTa/annotation.json
+  valid_root_path: ./datasets/QaTa/valid
+  test_csv_path: ./data_splits/QaTa/annotation.json
+  test_root_path: ./datasets/QaTa/test
+
+PROTOCOL:
+  name: main_non_ispg
+  paper_batch_size: 32
+  ispg_enabled: false

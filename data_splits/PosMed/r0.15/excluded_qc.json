@@ -1,0 +1,552 @@
+{
+  "metadata": {
+    "dataset": "PosMed/PRS-Med",
+    "text_field": "answer",
+    "position_label_source": "answer",
+    "position_column_usage": "offline_audit_only",
+    "modalities": [
+      "brain_mri",
+      "breast_ultrasound",
+      "lung_ct",
+      "lung_xray",
+      "polyp_endoscopy",
+      "skin_dermoscopy"
+    ],
+    "seed": 42,
+    "labeled_fraction_target": 0.15,
+    "derived_val_fraction": 0.1,
+    "split_protocol": {
+      "brain_mri": "Original Cheng patient-disjoint fold 1 test, fold 2 val, folds 3-5 train; PID/fold mapping frozen offline.",
+      "lung_ct": "Official val merged into held-out test because both use the same 40 studies; new val derived from official-train study IDs.",
+      "breast_ultrasound": "Official case-disjoint train/val/test.",
+      "lung_xray": "Official case-disjoint train/val/test.",
+      "polyp_endoscopy": "Official test retained; exact-image-linked case-group val derived from train because video/patient mapping is unavailable.",
+      "skin_dermoscopy": "Official test retained; exact-image-linked case-group val derived from train because patient mapping is unavailable; cross-test content reused rows excluded."
+    },
+    "label_selection": {
+      "brain_mri": {
+        "selection_unit": "patient_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.149755832881172,
+        "labeled_images": 276,
+        "unlabeled_images": 1567,
+        "labeled_groups": 20,
+        "unlabeled_groups": 122,
+        "target_images": 276,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 6,
+          "required_records": 92,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 276,
+          "required_images_in_current_train": 92,
+          "added_groups": 14,
+          "selected_groups_total": 20,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      },
+      "breast_ultrasound": {
+        "selection_unit": "case_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.15025041736227046,
+        "labeled_images": 90,
+        "unlabeled_images": 509,
+        "labeled_groups": 90,
+        "unlabeled_groups": 509,
+        "target_images": 90,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 30,
+          "required_records": 30,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 90,
+          "required_images_in_current_train": 30,
+          "added_groups": 60,
+          "selected_groups_total": 90,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      },
+      "lung_ct": {
+        "selection_unit": "study_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.14993717716040766,
+        "labeled_images": 1074,
+        "unlabeled_images": 6089,
+        "labeled_groups": 9,
+        "unlabeled_groups": 50,
+        "target_images": 1074,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 4,
+          "required_records": 358,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 1074,
+          "required_images_in_current_train": 358,
+          "added_groups": 5,
+          "selected_groups_total": 9,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      },
+      "lung_xray": {
+        "selection_unit": "case_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.15,
+        "labeled_images": 2442,
+        "unlabeled_images": 13838,
+        "labeled_groups": 2434,
+        "unlabeled_groups": 13818,
+        "target_images": 2442,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 810,
+          "required_records": 814,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 2442,
+          "required_images_in_current_train": 814,
+          "added_groups": 1624,
+          "selected_groups_total": 2434,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      },
+      "polyp_endoscopy": {
+        "selection_unit": "case_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.15019157088122606,
+        "labeled_images": 196,
+        "unlabeled_images": 1109,
+        "labeled_groups": 196,
+        "unlabeled_groups": 1109,
+        "target_images": 196,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 65,
+          "required_records": 65,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 196,
+          "required_images_in_current_train": 65,
+          "added_groups": 131,
+          "selected_groups_total": 196,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      },
+      "skin_dermoscopy": {
+        "selection_unit": "case_and_exact_image_component",
+        "target_fraction": 0.15,
+        "actual_image_fraction": 0.1501240694789082,
+        "labeled_images": 121,
+        "unlabeled_images": 685,
+        "labeled_groups": 121,
+        "unlabeled_groups": 684,
+        "target_images": 121,
+        "nesting_audit": {
+          "enabled": true,
+          "required_groups": 40,
+          "required_records": 40,
+          "missing_required_groups": 0,
+          "missing_required_group_examples": [],
+          "missing_required_records": 0,
+          "missing_required_record_examples": [],
+          "group_id_mismatches": 0,
+          "group_id_mismatch_examples": [],
+          "partial_required_groups": 0,
+          "partial_required_group_examples": [],
+          "target_images": 121,
+          "required_images_in_current_train": 40,
+          "added_groups": 81,
+          "selected_groups_total": 121,
+          "missing_required_groups_after_selection": 0,
+          "missing_required_group_examples_after_selection": [],
+          "missing_required_records_after_selection": 0,
+          "missing_required_record_examples_after_selection": []
+        }
+      }
+    },
+    "partition_counts": {
+      "brain_mri": {
+        "train": 1843,
+        "val": 679,
+        "test": 542
+      },
+      "breast_ultrasound": {
+        "train": 599,
+        "val": 50,
+        "test": 113
+      },
+      "lung_ct": {
+        "train": 7163,
+        "val": 796,
+        "test": 4809
+      },
+      "lung_xray": {
+        "train": 16280,
+        "val": 1372,
+        "test": 957
+      },
+      "polyp_endoscopy": {
+        "train": 1305,
+        "val": 145,
+        "test": 798
+      },
+      "skin_dermoscopy": {
+        "train": 806,
+        "val": 90,
+        "test": 379
+      }
+    },
+    "position_audit": {
+      "total": 38726,
+      "answer_parsed": 38725,
+      "answer_unparsed": 1,
+      "answer_parse_coverage": 0.999974177555131,
+      "unparsed_sample_ids": [
+        "lung_ct:lung_CT/train_masks/ID00025637202179541264076_11.jpg"
+      ],
+      "source": "answer only; position column is audit-only and never a fallback"
+    },
+    "content_audit": {
+      "records": 38731,
+      "unique_files": 77462,
+      "bytes_read": 4228920967,
+      "algorithm": "sha256"
+    },
+    "duplicate_qc": {
+      "image_groups_crossing_official_test": [
+        {
+          "sha256": "1668c6986889433151f98eb8af5162f2b2c5d927da1e00b365d6ec574e7c8840",
+          "kept": [
+            "lung_ct:lung_CT/test_masks/ID00299637202280383305867_32.jpg"
+          ],
+          "excluded": [
+            "lung_ct:lung_CT/val_masks/ID00299637202280383305867_32.jpg"
+          ],
+          "original_splits": [
+            "test",
+            "val"
+          ]
+        },
+        {
+          "sha256": "7339dae09086b219fd7d330f133aabbe936e5703b511aa55c472a0550f8b71de",
+          "kept": [
+            "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0000279_Segmentation.png"
+          ],
+          "excluded": [
+            "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0000280_Segmentation.png"
+          ],
+          "original_splits": [
+            "test",
+            "train"
+          ]
+        },
+        {
+          "sha256": "c694a3ad31149b8198037907d79db1ed968d0e281d0d6a8f292e2118c42050a7",
+          "kept": [
+            "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0001484_Segmentation.png"
+          ],
+          "excluded": [
+            "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001184_Segmentation.png"
+          ],
+          "original_splits": [
+            "test",
+            "train"
+          ]
+        },
+        {
+          "sha256": "f122a339428c9cb3dad1ee9be837e0848b2ecfd58f7f5fa15bdda1ac12351428",
+          "kept": [
+            "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0001685_Segmentation.png"
+          ],
+          "excluded": [
+            "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001385_Segmentation.png"
+          ],
+          "original_splits": [
+            "test",
+            "train"
+          ]
+        }
+      ],
+      "mask_only_groups_crossing_official_test": [
+        {
+          "sha256": "6d4796b7b49b9571f1c73270c3869965fdad5a73cc05fc0c657dc98c86bd20d3",
+          "kept": [
+            "skin_dermoscopy:skin_rgbimage/test_masks/ISIC_0011374_Segmentation.png"
+          ],
+          "excluded": [
+            "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0010065_Segmentation.png"
+          ],
+          "original_splits": [
+            "test",
+            "train"
+          ]
+        }
+      ],
+      "num_excluded": 5
+    },
+    "overlap_audit": {
+      "sample_id": {
+        "train_labeled__train_unlabeled": 0,
+        "train_labeled__val": 0,
+        "train_labeled__test": 0,
+        "train_unlabeled__val": 0,
+        "train_unlabeled__test": 0,
+        "val__test": 0
+      },
+      "image_sha256": {
+        "train_labeled__train_unlabeled": 0,
+        "train_labeled__val": 0,
+        "train_labeled__test": 0,
+        "train_unlabeled__val": 0,
+        "train_unlabeled__test": 0,
+        "val__test": 0
+      },
+      "mask_sha256_audit_only": {
+        "train_labeled__train_unlabeled": 2,
+        "train_labeled__val": 0,
+        "train_labeled__test": 0,
+        "train_unlabeled__val": 0,
+        "train_unlabeled__test": 0,
+        "val__test": 0
+      },
+      "recoverable_group": {
+        "train_labeled__train_unlabeled": 0,
+        "train_labeled__val": 0,
+        "train_labeled__test": 0,
+        "train_unlabeled__val": 0,
+        "train_unlabeled__test": 0,
+        "val__test": 0
+      },
+      "partition_group": {
+        "train_labeled__train_unlabeled": 0,
+        "train_labeled__val": 0,
+        "train_labeled__test": 0,
+        "train_unlabeled__val": 0,
+        "train_unlabeled__test": 0,
+        "val__test": 0
+      }
+    },
+    "group_limitations": "Brain MRI and lung CT are patient/study-disjoint. Public files for breast US, lung X-ray, polyp, and skin expose case IDs but not patient IDs; those splits are case/content-disjoint only. Polyp train/test share Kvasir and ClinicDB sources.",
+    "brain_pid_map": {
+      "path": "annotations/brain_mri_slice_to_pid.csv",
+      "sha256": "9452ed8e731313725762ddea11b5dbc945cc0f34868b1fdc4e43fc44ca88de9d",
+      "patients": 233,
+      "source": "Cheng/Figshare cjdata.PID with folds validated against official cvind.mat"
+    },
+    "nested_labeled_selection": {
+      "enabled": true,
+      "path_argument": "/tmp/semimedref_posmed_portable_r005/train_labeled_5pct.json",
+      "relative_to_output_dir": "../semimedref_posmed_portable_r005/train_labeled_5pct.json",
+      "sha256": "e8f6f84cd8bee8a506248e3c2709edfca9d25eba5b12ada6b45a337458457004",
+      "parent_manifest": "train_labeled",
+      "parent_labeled_fraction_target": 0.05,
+      "required_records": 1399,
+      "required_groups": 955,
+      "duplicate_required_records": 0,
+      "cross_modality_required_groups": 0,
+      "required_records_by_modality": {
+        "brain_mri": 92,
+        "breast_ultrasound": 30,
+        "lung_ct": 358,
+        "lung_xray": 814,
+        "polyp_endoscopy": 65,
+        "skin_dermoscopy": 40
+      },
+      "required_groups_by_modality": {
+        "brain_mri": 6,
+        "breast_ultrasound": 30,
+        "lung_ct": 4,
+        "lung_xray": 810,
+        "polyp_endoscopy": 65,
+        "skin_dermoscopy": 40
+      },
+      "missing_required_records": 0,
+      "missing_required_record_examples": [],
+      "missing_required_groups": 0,
+      "missing_required_group_examples": [],
+      "retained_required_records": 1399,
+      "retained_required_groups": 955,
+      "strictly_nested": true
+    },
+    "manifest": "excluded_qc",
+    "num_records": 5,
+    "counts_by_modality": {
+      "brain_mri": 0,
+      "breast_ultrasound": 0,
+      "lung_ct": 1,
+      "lung_xray": 0,
+      "polyp_endoscopy": 0,
+      "skin_dermoscopy": 4
+    }
+  },
+  "records": [
+    {
+      "sample_id": "lung_ct:lung_CT/val_masks/ID00299637202280383305867_32.jpg",
+      "image_path": "lung_CT/val_masks/ID00299637202280383305867_32.jpg",
+      "image_name": "ID00299637202280383305867_32.jpg",
+      "question": "In which area of the lung is the second anatomy situated?",
+      "answer": "The second anatomy is located in the lower left part of the lung.",
+      "position": "The top left segment of the lung reveals a anatomy. The second anatomy is observed at bottom left in the lung.",
+      "split": "val",
+      "modality": "lung_ct",
+      "semantic_class": "abnormality",
+      "canonical_positions": [
+        "bottom_left"
+      ],
+      "position_source": "answer",
+      "position_valid": true,
+      "annotation_positions": [
+        "top_left",
+        "bottom_left"
+      ],
+      "source_csv": "annotations/qa/lung_CT.csv",
+      "source_row": 9912,
+      "group_id": "lung_ct_study:ID00299637202280383305867",
+      "group_source": "filename_without_slice_suffix",
+      "exclusion_reason": "exact image/mask content reused by official test"
+    },
+    {
+      "sample_id": "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0000280_Segmentation.png",
+      "image_path": "skin_rgbimage/train_masks/ISIC_0000280_Segmentation.png",
+      "image_name": "ISIC_0000280",
+      "question": "Can you describe the location of the skin tumour in the image?",
+      "answer": "The malignant skin tumour is situated in the central area of the image.",
+      "position": "The tumor is in position center and near the center.",
+      "split": "train",
+      "modality": "skin_dermoscopy",
+      "semantic_class": "malignant",
+      "canonical_positions": [
+        "center"
+      ],
+      "position_source": "answer",
+      "position_valid": true,
+      "annotation_positions": [
+        "center"
+      ],
+      "source_csv": "annotations/qa/skin_rgbimage.csv",
+      "source_row": 187,
+      "group_id": "skin_dermoscopy_case:ISIC_0000280",
+      "group_source": "public_case_id_no_patient_metadata",
+      "exclusion_reason": "exact image/mask content reused by official test"
+    },
+    {
+      "sample_id": "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001184_Segmentation.png",
+      "image_path": "skin_rgbimage/train_masks/ISIC_0001184_Segmentation.png",
+      "image_name": "ISIC_0001184",
+      "question": "Can you describe the location of the benign skin growth in the image?",
+      "answer": "The benign skin growth is located in the bottom left area, near the central part of the image.",
+      "position": "The tumor is situated in position bottom left and close to the center.",
+      "split": "train",
+      "modality": "skin_dermoscopy",
+      "semantic_class": "benign",
+      "canonical_positions": [
+        "bottom_left"
+      ],
+      "position_source": "answer",
+      "position_valid": true,
+      "annotation_positions": [
+        "bottom_left"
+      ],
+      "source_csv": "annotations/qa/skin_rgbimage.csv",
+      "source_row": 370,
+      "group_id": "skin_dermoscopy_case:ISIC_0001184",
+      "group_source": "public_case_id_no_patient_metadata",
+      "exclusion_reason": "exact image/mask content reused by official test"
+    },
+    {
+      "sample_id": "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0001385_Segmentation.png",
+      "image_path": "skin_rgbimage/train_masks/ISIC_0001385_Segmentation.png",
+      "image_name": "ISIC_0001385",
+      "question": "Where is the skin lesion located in the image?",
+      "answer": "The benign skin tumour is situated close to the central area of the image.",
+      "position": "In position center and the tumor is situated near the center.",
+      "split": "train",
+      "modality": "skin_dermoscopy",
+      "semantic_class": "benign",
+      "canonical_positions": [
+        "center"
+      ],
+      "position_source": "answer",
+      "position_valid": true,
+      "annotation_positions": [
+        "center"
+      ],
+      "source_csv": "annotations/qa/skin_rgbimage.csv",
+      "source_row": 389,
+      "group_id": "skin_dermoscopy_case:ISIC_0001385",
+      "group_source": "public_case_id_no_patient_metadata",
+      "exclusion_reason": "exact image/mask content reused by official test"
+    },
+    {
+      "sample_id": "skin_dermoscopy:skin_rgbimage/train_masks/ISIC_0010065_Segmentation.png",
+      "image_path": "skin_rgbimage/train_masks/ISIC_0010065_Segmentation.png",
+      "image_name": "ISIC_0010065",
+      "question": "In which part of the image can the skin growth be found?",
+      "answer": "The skin tumour, which is benign, is positioned close to the middle of the image.",
+      "position": "The tumor lies in position center and near the center of the image.",
+      "split": "train",
+      "modality": "skin_dermoscopy",
+      "semantic_class": "benign",
+      "canonical_positions": [
+        "center"
+      ],
+      "position_source": "answer",
+      "position_valid": true,
+      "annotation_positions": [
+        "center"
+      ],
+      "source_csv": "annotations/qa/skin_rgbimage.csv",
+      "source_row": 588,
+      "group_id": "skin_dermoscopy_case:ISIC_0010065",
+      "group_source": "public_case_id_no_patient_metadata",
+      "exclusion_reason": "exact image/mask content reused by official test"
+    }
+  ]
+}

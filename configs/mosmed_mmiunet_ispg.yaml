@@ -1,0 +1,87 @@
+TRAIN:
+  seed: 42
+  train_batch_size: 16
+  accumulate_grad_batches: 2
+  valid_batch_size: 8
+  num_workers: 8
+  lr: 0.0003
+  image_size: [224, 224]
+  min_epochs: 20
+  max_epochs: 100
+  patience: 30
+  device: [0]
+  model_save_path: ./outputs/ispg
+  model_save_filename: mmiunet
+  convnext_checkpoint: ./pretrained/convnext_tiny_22k_224.pth
+  use_pos_aug: true
+  pos_aug_mode: mix
+  pos_aug_p: 0.5
+  use_pos_aug_geosync: false
+  p_hflip: 0.0
+  enable_itc: true
+  itc_weight: 0.02
+  itc_tau: 0.07
+  itc_w_unsup: 0.10
+  use_xpatchmix: true
+  xpatchmix_mode: pos
+  mix_margin: 0.0
+  mix_block: 16
+  mix_prob: 0.08
+  visualization_interval: 0
+
+MODEL:
+  model_arch: mmiunet
+  bert_type: microsoft/BiomedVLP-CXR-BERT-specialized
+  vision_type: facebook/convnext-tiny-224
+  project_dim: 768
+
+SEMI:
+  burn_in_epochs: 5
+  unsup_weight: 0.3
+  conf_th: 0.55
+  combined_mode: max_size_cycle
+  ema_decay_semi: 0.999
+  unsup_rampup_epochs: 15
+  ema_decay_start: 0.99
+  ema_decay_end: 0.999
+  ema_warmup_epochs: 20
+  pseudo_threshold_mode: hard
+  pseudo_threshold_temp: 0.05
+
+POSITION:
+  position_supervision: report
+  position_head: gap_mlp
+  position_loss_weight: 0.1
+  position_unsup_weight: 0.1
+  position_confidence: 0.8
+  position_phrase_threshold: 0.5
+  position_completion_start_epoch: 5
+  position_completion_probability: 0.0
+  position_pretrained: ./pretrained/convnext_tiny_22k_224.pth
+  position_init_checkpoint: ""
+  validation_text_mode: soft_image
+  image_route_start_probability: 1.0
+  image_route_max_probability: 1.0
+  image_route_ramp_epochs: 0
+  position_bce_mix: 0.5
+  position_gamma_negative: 2.0
+  position_gamma_positive: 0.0
+  position_cardinality_weight: 0.1
+  position_removal_probability: 0.5
+  position_validation_removal_probability: 0.5
+  position_removal_seed: 42
+
+DATA:
+  dataset: mosmed
+  train_csv_path: ./data_splits/MosMed/labeled_0.02.plabel.csv
+  unlabeled_csv_path: ./data_splits/MosMed/unlabeled_0.98.plabel.csv
+  train_root_path: ./datasets/MosMed
+  valid_csv_path: ./data_splits/MosMed/Val_text_MosMedData+ 1(in).plabel.csv
+  valid_root_path: ./datasets/MosMed
+  test_csv_path: ./data_splits/MosMed/Test_text_MosMedData+(in).plabel.csv
+  test_root_path: ./datasets/MosMed
+
+PROTOCOL:
+  name: optional_ispg
+  paper_batch_size: 32
+  ispg_enabled: true
